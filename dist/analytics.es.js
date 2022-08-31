@@ -1176,7 +1176,8 @@ var FgObject = /*#__PURE__*/function () {
         var value;
 
         try {
-          value = _this.hasIntialRequest ? 9999 : _player.currentTime();
+          // value = _this.hasIntialRequest ? 9999 : _player.currentTime();
+          value = _player.currentTime();
         } catch (e) {
           value = 9999;
         }

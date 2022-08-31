@@ -39,7 +39,8 @@ class FgObject {
         let value;
 
         try {
-          value = this.hasIntialRequest ? 9999 : _player.currentTime();
+          // value = _this.hasIntialRequest ? 9999 : _player.currentTime();
+          value = _player.currentTime();
         } catch (e) {
           value = 9999;
         }
