@@ -39,11 +39,7 @@ class FgObject {
         let value;
 
         try {
-          if (this.hasIntialRequest) {
-            value = 9999;
-          } else {
-            value = Math.floor(_player.currentTime() / 60);
-          }
+          value = this.hasIntialRequest ? 9999 : _player.currentTime();
         } catch (e) {
           value = 9999;
         }
