@@ -2,8 +2,8 @@
   "name": "@fanhero/analytics",
   "version": "1.0.0",
   "description": "Collect data from client on during watching movie.",
-  "main": "dist/videojs-analytics.cjs.js",
-  "module": "dist/videojs-analytics.es.js",
+  "main": "dist/analytics.cjs.js",
+  "module": "dist/analytics.es.js",
   "generator-videojs-plugin": {
     "version": "7.6.3"
   },
