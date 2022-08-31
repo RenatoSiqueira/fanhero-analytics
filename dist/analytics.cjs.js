@@ -41,16 +41,16 @@ function _setPrototypeOf(o, p) {
 var version = "1.0.0";
 
 var ActionModel = {
-  name: "",
-  method: "",
-  url: ""
+  name: '',
+  method: '',
+  url: ''
 };
 
 var config = {
-  APP_TYPE: "WEB",
+  APP_TYPE: 'WEB',
   APP_VERSION: version,
-  KAFKA_TOPIC: "player",
-  REQUEST_TYPE: "player"
+  KAFKA_TOPIC: 'player',
+  REQUEST_TYPE: 'player'
 };
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
@@ -935,7 +935,7 @@ var Client = /*#__PURE__*/function () {
    * create ClientJs instance.
    */
   function Client() {
-    var _window = typeof window$1 === "undefined" ? null : window$1;
+    var _window = typeof window$1 === 'undefined' ? null : window$1;
 
     if (_window) {
       try {
@@ -988,7 +988,7 @@ var Client = /*#__PURE__*/function () {
       }
     }
 
-    return "";
+    return '';
   }
   /**
    * Get user OS version.
@@ -1010,7 +1010,7 @@ var Client = /*#__PURE__*/function () {
       }
     }
 
-    return "";
+    return '';
   }
   /**
    * Get user browser info.
@@ -1053,7 +1053,7 @@ var Client = /*#__PURE__*/function () {
       }
     }
 
-    return "";
+    return '';
   }
   /**
    * Get user browser version.
@@ -1075,7 +1075,7 @@ var Client = /*#__PURE__*/function () {
       }
     }
 
-    return "";
+    return '';
   }
   /**
    * Get user device resolution.
@@ -1091,12 +1091,12 @@ var Client = /*#__PURE__*/function () {
   ;
 
   _proto.getDeviceResolution = function getDeviceResolution() {
-    if (typeof window$1 !== "undefined") {
+    if (typeof window$1 !== 'undefined') {
       var screen = window$1.screen;
-      return screen.width + "x" + screen.height;
+      return screen.width + 'x' + screen.height;
     }
 
-    return "";
+    return '';
   };
 
   _proto.get = function get(methodName) {
@@ -1180,11 +1180,7 @@ var FgObject = /*#__PURE__*/function () {
         var value;
 
         try {
-          if (_this.hasIntialRequest) {
-            value = 9999;
-          } else {
-            value = Math.floor(_player.currentTime() / 60);
-          }
+          value = _this.hasIntialRequest ? 9999 : _player.currentTime();
         } catch (e) {
           value = 9999;
         }
@@ -1250,21 +1246,21 @@ var FgObject = /*#__PURE__*/function () {
   _proto.getFromParams = function getFromParams(param, parameters) {
     var _this2 = this;
 
-    var value = "";
+    var value = '';
 
     if (param) {
       Object.keys(parameters).map(function (property) {
         if (property === param) {
           value = parameters[property];
 
-          if (typeof value === "string") {
+          if (typeof value === 'string') {
             value = "\"" + value + "\"";
           }
 
           return value;
         }
 
-        if (typeof property === "object") {
+        if (typeof property === 'object') {
           value = _this2.getFromParams(param, property);
         }
       });
@@ -1327,12 +1323,12 @@ var FgObject = /*#__PURE__*/function () {
   _proto.calculateParam = function calculateParam(property, params) {
     var _this3 = this;
 
-    if (property.indexOf("FG-") === 0) {
-      var propertyName = "";
+    if (property.indexOf('FG-') === 0) {
+      var propertyName = '';
 
-      if (property.indexOf("FG-VIDEO_") === 0 || property.indexOf("FG-DEVICE_") === 0) {
-        propertyName = property.replace("FG-VIDEO_", "").replace("FG-DEVICE_", "");
-      } else if (property.indexOf("FG-METHOD") === 0) {
+      if (property.indexOf('FG-VIDEO_') === 0 || property.indexOf('FG-DEVICE_') === 0) {
+        propertyName = property.replace('FG-VIDEO_', '').replace('FG-DEVICE_', '');
+      } else if (property.indexOf('FG-METHOD') === 0) {
         var formula = this.getFormula(property);
         var parameterArray = this.getParameters(formula);
 
@@ -1371,7 +1367,7 @@ var equal = function equal(obj, model) {
 
   if (obj && model) {
     if (Array.isArray(obj)) {
-      throw new Error("require object instead of array for equal with model...!");
+      throw new Error('require object instead of array for equal with model...!');
     }
 
     Object.keys(model).map(function (key) {
@@ -1443,8 +1439,8 @@ var Handler = /*#__PURE__*/function () {
   var _proto = Handler.prototype;
 
   _proto.setIntervalId = function setIntervalId(id) {
-    if (id === "undefined" || id === null) {
-      throw new TypeError("Interval id is not valid.");
+    if (id === 'undefined' || id === null) {
+      throw new TypeError('Interval id is not valid.');
     }
 
     this.intervalId = id;
@@ -1538,7 +1534,7 @@ var Handler = /*#__PURE__*/function () {
         _extends(params, clientInfo);
       }
     } catch (e) {
-      videojs.log("Some error on add ClientInfo.");
+      videojs.log('Some error on add ClientInfo.');
     }
 
     return params;
@@ -1571,7 +1567,7 @@ var Handler = /*#__PURE__*/function () {
         _extends(params, requiredParameter);
       }
     } catch (e) {
-      videojs.log("Some error on add RequiredParams.");
+      videojs.log('Some error on add RequiredParams.');
     }
 
     return params;
@@ -1592,7 +1588,7 @@ var Handler = /*#__PURE__*/function () {
     }
 
     var _headers = {
-      "Content-Type": "application/json"
+      'Content-Type': 'application/json'
     };
 
     if (headers) {
@@ -1633,9 +1629,9 @@ var Handler = /*#__PURE__*/function () {
     Object.keys(_params).map(function (property) {
       var _type = typeof _params[property];
 
-      if (_type === "object") {
+      if (_type === 'object') {
         _params[property] = _this.getParamsValue(_params[property]);
-      } else if (_type === "string") {
+      } else if (_type === 'string') {
         _params[property] = _this.calculateValue(_params[property], _params);
       }
     });
@@ -1755,15 +1751,15 @@ var Handler = /*#__PURE__*/function () {
                 body: JSON.stringify(action.body ? _this3.getBody(action) : {})
               };
 
-              if (action.call && typeof action.call === "function") {
+              if (action.call && typeof action.call === 'function') {
                 action.call(config);
               } else {
                 videojs.xhr(config, function (err, resp, _body) {
                   if (resp.statusCode !== 200 || resp.statusCode !== 201) {
                     if (err) {
-                      videojs.log("Some error on call action method");
+                      videojs.log('Some error on call action method');
                     } else {
-                      videojs.log("Some error on call action method");
+                      videojs.log('Some error on call action method');
                     }
                   }
                 });
@@ -1799,7 +1795,7 @@ var Handler = /*#__PURE__*/function () {
           body: JSON.stringify(action.body ? this.getBody(action) : {})
         };
 
-        if (action.call && typeof action.call === "function") {
+        if (action.call && typeof action.call === 'function') {
           try {
             action.call(config).catch(function (e) {
               that.callAltAction();
@@ -1813,7 +1809,7 @@ var Handler = /*#__PURE__*/function () {
               that.callAltAction();
 
               if (err) {
-                videojs.log("Some error on call action method");
+                videojs.log('Some error on call action method');
               }
             }
           });
@@ -1851,7 +1847,7 @@ var Handler = /*#__PURE__*/function () {
   _proto.onLoadedMetaData = function onLoadedMetaData() {
     var _this4 = this;
 
-    this.player.one("loadedmetadata", function () {
+    this.player.one('loadedmetadata', function () {
       _this4.fgObject.setInitRequest(true);
 
       _this4.callAction();
@@ -1866,7 +1862,7 @@ var Handler = /*#__PURE__*/function () {
   _proto.onPlaying = function onPlaying() {
     var _this5 = this;
 
-    this.player.one("play", function () {
+    this.player.one('play', function () {
       var time = 0;
       var that = _this5;
       var intervalId = window$1.setInterval(function () {
@@ -1886,7 +1882,7 @@ var Handler = /*#__PURE__*/function () {
 
       _this5.setIntervalId(intervalId);
     });
-    this.player.on("dispose", function () {
+    this.player.on('dispose', function () {
       window$1.clearInterval(_this5.getIntervalId());
 
       _this5.setIntervalId(-1);
@@ -1901,19 +1897,19 @@ var Handler = /*#__PURE__*/function () {
   _proto.sameFunctionEvents = function sameFunctionEvents() {
     var _this6 = this;
 
-    this.multiEvent(["ended", "waiting"], function (props) {
-      if (props.type === "ended") {
+    this.multiEvent(['ended', 'waiting'], function (props) {
+      if (props.type === 'ended') {
         // show extra details
         _this6.pauseSend();
       }
 
       props.preventDefault();
     });
-    this.multiEvent(["play", "adplay"], function (props) {
+    this.multiEvent(['play', 'adplay'], function (props) {
       _this6.resumeSend(); //  noSleep active
 
     });
-    this.multiEvent(["pause", "adpause"], function (props) {
+    this.multiEvent(['pause', 'adpause'], function (props) {
       _this6.pauseSend(); //  noSleep disable
 
     });
@@ -1935,7 +1931,7 @@ var Handler = /*#__PURE__*/function () {
   return Handler;
 }();
 
-var Plugin = videojs.getPlugin("plugin"); // Default options for the plugin.
+var Plugin = videojs.getPlugin('plugin'); // Default options for the plugin.
 
 var defaults = {};
 /**
@@ -1970,7 +1966,7 @@ var Analytics = /*#__PURE__*/function (_Plugin) {
     handler.setOptions(options);
 
     _this.player.ready(function () {
-      _this.player.addClass("vjs-analytics");
+      _this.player.addClass('vjs-analytics');
 
       handler.init();
     });
@@ -1986,6 +1982,6 @@ Analytics.defaultState = {}; // Include the version number.
 
 Analytics.VERSION = version; // Register the plugin with video.js.
 
-videojs.registerPlugin("Analytics", Analytics);
+videojs.registerPlugin('Analytics', Analytics);
 
 module.exports = Analytics;
