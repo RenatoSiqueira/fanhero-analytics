@@ -171,8 +171,13 @@ class FgObject {
     if (property.indexOf('FG-') === 0) {
       let propertyName = '';
 
-      if (property.indexOf('FG-VIDEO_') === 0 || property.indexOf('FG-DEVICE_') === 0) {
-        propertyName = property.replace('FG-VIDEO_', '').replace('FG-DEVICE_', '');
+      if (
+        property.indexOf('FG-VIDEO_') === 0 ||
+        property.indexOf('FG-DEVICE_') === 0
+      ) {
+        propertyName = property
+          .replace('FG-VIDEO_', '')
+          .replace('FG-DEVICE_', '');
       } else if (property.indexOf('FG-METHOD') === 0) {
         let formula = this.getFormula(property);
 
@@ -181,7 +186,10 @@ class FgObject {
         if (formula) {
           if (parameterArray.length > 0) {
             parameterArray.map(prameter => {
-              formula = formula.replace(prameter[0], this.getFromParams(prameter[1], params));
+              formula = formula.replace(
+                prameter[0],
+                this.getFromParams(prameter[1], params)
+              );
             });
             return this.parse(formula);
           }

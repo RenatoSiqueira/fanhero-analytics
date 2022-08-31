@@ -245,8 +245,16 @@ class Handler {
       if (!opt.ignoreClientInfo) {
         _params = this.addClientInfo(_params, targetParamName);
       }
-      if (requiredParameter && requiredParameter.length > 0 && !opt.ignoreRequireParameter) {
-        _params = this.addRequiredParams(_params, requiredParameter, targetParamName);
+      if (
+        requiredParameter &&
+        requiredParameter.length > 0 &&
+        !opt.ignoreRequireParameter
+      ) {
+        _params = this.addRequiredParams(
+          _params,
+          requiredParameter,
+          targetParamName
+        );
       }
       _params = this.getParamsValue(_params);
       return _params;
